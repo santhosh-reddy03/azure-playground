@@ -49,9 +49,9 @@
     }
   ],
   "outputs": {
-    //     "storageEndpoint": {
-    //       "type": "object",
-    //       "value": "[reference('templatestrorage1wparams').primaryEndpoints]"
-    //     }
+    "storageEndpoint": {
+      "type": "object",
+      "value": "[reference(parameters('storageName')).primaryEndpoints]"
+    }
   }
 }
