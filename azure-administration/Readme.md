@@ -8,5 +8,5 @@ It covers the following topics
 4. Configure and manage virtual networking
 5. Monitor and maintain Azure resources
 
-author: Santhosh reddy Barla
+Author: Santhosh Reddy Barla
 Please create a pull request if you find any issues in the provided topics
