@@ -24,7 +24,7 @@
       "apiVersion": "2021-04-01",
       "name": "templatestrorage1wparams",
       "tags": {
-        "displayName": "learnexercise12345sa"
+        "displayName": "templatestrorage1wparams"
       },
       "location": "[resourceGroup().location]",
       "kind": "StorageV2",
@@ -36,5 +36,10 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "storageEndpoint": {
+      "type": "object",
+      "value": "[reference('templatestrorage1wparams').primaryEndpoints]"
+    }
+  }
 }
