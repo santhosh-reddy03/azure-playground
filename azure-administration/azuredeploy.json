@@ -1,4 +1,40 @@
 {
+    /*commands to deploy the arm template
+    az login
+   az account set --subscription "Concierge Subscription"
+   az account list
+   az group list --output table
+   ---- the following commands set a default resource group so that we dont have to specify it every cmd
+   az configure --defaults group=learn-9f8e7475-965c-40b2-a294-c943c73fd0b3
+   -------------------------------------------------
+   templateFile="azuredeploy.json"
+   today=$(date +"%d-%b-%Y")
+   DeploymentName="blanktemplate-"$today
+   az deployment group create  --name $DeploymentName  --template-file $templateFile
+   ----------------------------------
+   templateFile="azuredeploy.json"
+   today=$(date +"%d-%b-%Y")
+   DeploymentName="addstorage-"$today
+   az deployment group create   --name $DeploymentName   --template-file $templateFile
+   -----------------------
+   templateFile="azuredeploy.json"
+   az deployment group create   --name testdeployment1   --template-file $templateFile   --parameters storageAccountType=Standard_LRS
+   --------------------------------------
+   templateFile="azuredeploy.json"
+   today=$(date +"%d-%b-%Y")
+   DeploymentName="addnameparameter-"$today
+   az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters storageName=tstorage12
+   -------------------------------------------
+   templateFile="azuredeploy.json"
+   today=$(date +"%d-%b-%Y")
+   DeploymentName="addSkuParameter-"$today
+   az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters storageSKU=Standard_GRS storageName=tstorage12
+   ------------------------------------------
+   templateFile="azuredeploy.json"
+   today=$(date +"%d-%b-%Y")
+   DeploymentName="addSkuParameter-"$today
+   az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters storageSKU=Basic storageName=tstorage12
+*/
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
