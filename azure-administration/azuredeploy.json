@@ -2,19 +2,31 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageAccountType": {
+    "storageName": {
       "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_ZRS",
-        "Premium_LRS"
-      ],
+      "minLength": 3,
+      "maxLength": 24,
       "metadata": {
-        "description": "Storage Account type"
+        "description": "name of azure storage resource"
       }
     }
+    // "storageAccountType": {
+    //   "type": "string",
+    //   "defaultValue": "Standard_LRS",
+    //   "allowedValues": [
+    //     "Standard_LRS",
+    //     "Standard_GRS",
+    //     "Standard_RAGRS",
+    //     "Standard_ZRS",
+    //     "Premium_LRS",
+    //     "Premium_ZRS",
+    //     "Standard_GZRS",
+    //     "Standard_RAGZRS"
+    //   ],
+    //   "metadata": {
+    //     "description": "description"
+    //   }
+    // }
   },
   "functions": [],
   "variables": {},
@@ -22,14 +34,16 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-04-01",
-      "name": "templatestrorage1wparams",
+      "name": "[parameters('storageName')]",
       "tags": {
-        "displayName": "templatestrorage1wparams"
+        "displayName": "[parameters('storageName')]"
       },
       "location": "[resourceGroup().location]",
       "kind": "StorageV2",
       "sku": {
-        "name": "[parameters('storageAccountType')]"
+        // "name": "[parameters('storageAccountType')]"
+        "name": "Standard_LRS",
+        "tier": "Standard"
       },
       "properties": {
         "supportsHttpsTrafficOnly": true
@@ -37,9 +51,9 @@
     }
   ],
   "outputs": {
-    "storageEndpoint": {
-      "type": "object",
-      "value": "[reference('templatestrorage1wparams').primaryEndpoints]"
-    }
+    //     "storageEndpoint": {
+    //       "type": "object",
+    //       "value": "[reference('templatestrorage1wparams').primaryEndpoints]"
+    //     }
   }
 }
